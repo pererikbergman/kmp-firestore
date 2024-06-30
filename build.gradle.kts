@@ -8,4 +8,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
 
     kotlin("plugin.serialization") version libs.versions.kotlin
+
+    id("com.google.gms.google-services") version "4.4.2" apply false
 }

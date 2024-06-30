@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
 
     kotlin("plugin.serialization")
+
+    id("com.google.gms.google-services")
 }
 
 kotlin {
@@ -38,6 +40,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(project.dependencies.platform(libs.android.firebase.bom))
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -47,11 +50,14 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.kotlinx.coroutines.core)
 
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.gitlive.firebase.firestore)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
